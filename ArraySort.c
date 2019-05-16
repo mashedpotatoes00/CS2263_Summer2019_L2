@@ -30,8 +30,8 @@ void printArray(int *array, int size)
     printf("\n");
 }
 /*
-*@input: an array and index
 *swaps elements in array at index and index+1
+*@input: an array and index
 */
 void swapAdjacent(int *a, int index)
 {
@@ -40,8 +40,9 @@ void swapAdjacent(int *a, int index)
     *(a + index + 1) = temp;
 }
 /*
-*takes in array address location and index location to compare integer at that
-*location to the next index
+*compares elments in a array at index and index+1
+*@input: array and a index location
+*@return: a integer value of element at index - element at index+1
 */
 int compareAdjacent(int *a, int index)
 {
@@ -53,7 +54,8 @@ int compareAdjacent(int *a, int index)
  *compare elements that are side by side in the array and calls swapAdjacent()
  *to swpa elements that are side by side
  *@intput: take in array and size of that array
- *@return:returns sorted array
+ *@return: no more swaps need to take place, breaks the loop an exits method
+ *         with sorted array
  */
 void inPlaceSort(/* your input parameter */int size, int *a)
 {
