@@ -11,7 +11,7 @@
 COMPILER = gcc
 
 # The C flags to pass to gcc
-C_FLAGS = -Wall -Wextra
+C_FLAGS = -Wall -std=c99 -Wextra
 
 # prepend the command with '@' so that Make does not print the command before running it 
 help:

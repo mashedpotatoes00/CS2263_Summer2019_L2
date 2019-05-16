@@ -1,15 +1,15 @@
 /********************************
- * 
+ *
  * ArraySort.c
- * 
+ *
  * Created by Jean-Philippe Legault
- * 
+ *
  * Your task is to implement in place sorting using the two available functions
  * swapAdjacent, and compareAdjacent.
- * 
+ *
  * Some bug might have been introduced... you will have to find out if there are any!
  * if so, you will have to correct it
- * 
+ *
  ********************************/
 #include <stdio.h>
 #include <stdlib.h>
@@ -29,24 +29,39 @@ void printArray(int *array, int size)
 }
 
 void swapAdjacent(int *a, int index)
-{    
-    int *temp = a + index;
-    *(a + index) = *(a + index + 1);    
-    *(a + index + 1) = *temp;
+{
+    int temp = *(a + index);
+    *(a + index) = *(a + index + 1);
+    *(a + index + 1) = temp;
 }
-
+/*
+*takes in array address location  and what index to compare to the next index
+*/
 int compareAdjacent(int *a, int index)
 {
-    return *a + index - *a + index + 1;
+    return *(a + index) - *(a + (index + 1));
 }
 
 /**
  * TODO: implement in place sorting on an array
  * by using the two functions swapAdjacent and compareAdjacent
  */
-void inPlaceSort(/* your input parameter */)
+ //need array_size and array
+void inPlaceSort(/* your input parameter */int size, int *a)
 {
-
+  int swap;
+  for(int i=0; i<size-1;i++){
+    swap = 0;
+    for(int j=0; j<size-i-1; j++){
+      if(compareAdjacent(a, j) > 0){
+        swapAdjacent(a, j);
+        swap = 1;
+      }
+    }
+    if(swap == 0){
+      return;
+    }
+  }
 }
 
 int main(void)
@@ -69,16 +84,23 @@ int main(void)
 
     /**********************
      * TODO finish parsing the user input to fill the array
-     * 
+     *
      * it should parse user input with scanf to fill the array with values
      **********************/
+    for(int i=0; i<array_size; i++){
+      if(!scanf("%d", &a[i])){
+        printf("ERROR. Must enter an integer.\n");
+        return EXIT_FAILURE;
+      }
+    }
 
-    printf("=== Array before Sorting = ");
+    //printf("=== Array before Sorting = ");
     printArray(a, array_size);
 
-    inPlaceSort(/* your input parameter */);
-
+    inPlaceSort(/* your input parameter */array_size, a);
+    /*
     printf("=== Array after Sorting = ");
+    */
     printArray(a, array_size);
-
+    return EXIT_SUCCESS;
 }
