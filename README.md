@@ -3,6 +3,6 @@
 # Seth Wydysh
 # Tully Masters
 
-#This program takes in a positive integer as the size for the array
-#The following (previous input) numbers will be put into the array
-#The array is sorted using bubble sort, and then printed out
+This program takes in a positive integer as the size for the array
+The following (previous input) numbers will be put into the array
+The array is sorted using bubble sort, and then printed out
