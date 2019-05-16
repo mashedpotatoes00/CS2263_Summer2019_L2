@@ -10,6 +10,8 @@
  * Some bug might have been introduced... you will have to find out if there are any!
  * if so, you will have to correct it
  *
+ *Modified by Tully Masterson and Seth Wydysh
+ *
  ********************************/
 #include <stdio.h>
 #include <stdlib.h>
@@ -27,7 +29,10 @@ void printArray(int *array, int size)
     }
     printf("\n");
 }
-
+/*
+*@input: an array and index
+*swaps elements in array at index and index+1
+*/
 void swapAdjacent(int *a, int index)
 {
     int temp = *(a + index);
@@ -35,7 +40,8 @@ void swapAdjacent(int *a, int index)
     *(a + index + 1) = temp;
 }
 /*
-*takes in array address location  and what index to compare to the next index
+*takes in array address location and index location to compare integer at that
+*location to the next index
 */
 int compareAdjacent(int *a, int index)
 {
@@ -43,10 +49,12 @@ int compareAdjacent(int *a, int index)
 }
 
 /**
- * TODO: implement in place sorting on an array
- * by using the two functions swapAdjacent and compareAdjacent
+ *uses Bubble sort to sort Array of integers, calls methods compareAdjacent() to
+ *compare elements that are side by side in the array and calls swapAdjacent()
+ *to swpa elements that are side by side
+ *@intput: take in array and size of that array
+ *@return:returns sorted array
  */
- //need array_size and array
 void inPlaceSort(/* your input parameter */int size, int *a)
 {
   int swap;
@@ -98,9 +106,8 @@ int main(void)
     printArray(a, array_size);
 
     inPlaceSort(/* your input parameter */array_size, a);
-    /*
-    printf("=== Array after Sorting = ");
-    */
+    //printf("=== Array after Sorting = ");
+
     printArray(a, array_size);
     return EXIT_SUCCESS;
 }
